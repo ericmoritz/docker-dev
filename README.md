@@ -17,7 +17,7 @@ Here's an example:
 
 1. Fire up docker-dev on your laptop
 2. make changes, commit, and push remote location
-3. Laptop fall into lake
+3. Laptop falls into lake
 4. Spin up EC2 instance with Docker installed
 5. Steal a laptop, SSH into EC2 instance
 6. Run `docker pull ericmoritz/docker-dev`
@@ -37,7 +37,6 @@ Now that you have the `docker-dev` script, you can start it up
 
 ```
  $ ./docker-dev https://github.com/ericmoritz/docker-dev-home.git
-
 ```
 
 Or you can set `HOME_REPO_URL` in your environment to make ./docker-dev easier to start
@@ -51,7 +50,7 @@ Config
 -------
 
 `docker-dev` follows the [12 factor
-config](http://12factor.net/config) rules by storing the configuration
+config](http://12factor.net/config) rule by storing the configuration
 of your development environment external from `docker-dev`.
 
 Simply create a git repo that resembles your ideal home directory and
@@ -71,10 +70,11 @@ Keep in mind, you should treat the `docker-dev` container has
 temporary and commit any changes you make to version control before
 stopping the container.  The `/src` volume ensures you won't lose your
 changes if the container stops but doesn't ensure that your changes
-will exist if the host dies.
+will exist if the Docker host dies (Backup!).
 
 If your `PWD` has a file called `.project_profile` this file will be
-executed when you start up `docker-dev`.
+execute to configure your container for your porject when you start 
+up `docker-dev`.
 
 
 
