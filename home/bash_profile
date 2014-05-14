@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+if [ -z $HOME_REPO_URL ]; then
+   echo "Set HOME_REPO_URL to your home git repo"
+   exit -1
+fi 
+
+# Remove the existing home dir and overwrite the home dir with the repo
+echo "Exporting '$HOME_REPO_URL' to ~/"
+rm -rf ~
+git clone "$HOME_REPO_URL" ~/
+
+# If there is a ~/.bashrc, source it
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
+# If there is a project profile, source it
+if [ -f /src/.project_profile ]; then
+    . /src/.project_profile
+fi
+
+
+
+
