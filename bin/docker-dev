@@ -2,4 +2,11 @@
 if ! [ -z $1 ]; then
     HOME_REPO_URL=$1
 fi
-docker run -t -i -e "HOME_REPO_URL=$HOME_REPO_URL" -v `pwd`:/src ericmoritz/docker-dev
+if [ -z $DOCKER_DEV_USERNAME ]; then
+    DOCKER_DEV_USERNAME=ericmoritz
+fi
+
+IMAGENAME="$DOCKER_DEV_USERNAME/$(basename $0)"
+
+echo "Starting $IMAGENAME"
+docker run -t -i -e "HOME_REPO_URL=$HOME_REPO_URL" -v `pwd`:/src "$IMAGENAME"
